@@ -6,46 +6,10 @@ A modular simulation platform for teleoperation of general robotic systems.
 
 This project is structured into four independent modules to facilitate parallel development:
 
-1. **Simulation Engine** - Core physics simulation and virtual environment modeling (now with PyBullet integration!)
+1. **Simulation Engine** - Core physics simulation and virtual environment modeling
 2. **Robot Models** - Robot definitions, kinematics, dynamics, and control interfaces
 3. **Operator Interface** - Human input handling, visualization, and teleoperation UI
 4. **Communication Layer** - Data transfer protocols, latency simulation, and network effects
-
-## Enhanced Simulation Engine
-
-The simulation engine has been significantly enhanced with:
-
-- **PyBullet Integration**: Realistic physics simulation
-- **Visual Rendering**: Camera views and video creation
-- **Multiple Robot Types**: Support for various robot models (KUKA arm, Husky mobile platform, etc.)
-- **Environment Creator**: Tools for building different simulation scenarios
-- **Visualization Tools**: Plotting and data visualization utilities
-
-To try the enhanced simulation engine demo:
-
-```bash
-# Run the full demo
-./examples/simulation_demo.py
-
-# Run a specific demo
-./examples/simulation_demo.py --demo physics
-./examples/simulation_demo.py --demo control
-./examples/simulation_demo.py --demo trajectory
-./examples/simulation_demo.py --demo multi
-```
-
-Demo artifacts (images, videos, plots) are saved to the `docs/simulation_engine/` directory.
-
-## Documentation
-
-The project includes a documentation folder (`docs/`) where each module can store demo artifacts, screenshots, videos, and other documentation materials. This content can be used for:
-
-- GitHub Pages documentation
-- Progress reports
-- Demonstration materials
-- Usage examples
-
-Each module has its own subdirectory (e.g., `docs/simulation_engine/`, `docs/robot_models/`, etc.).
 
 ## Module Responsibilities
 
@@ -93,35 +57,65 @@ To ensure smooth collaboration:
 
 ## Getting Started
 
-1. Install dependencies:
+### Setting Up the Environment
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/teleop.git
+   cd teleop
    ```
+
+2. Create a virtual environment:
+   ```bash
+   # On macOS/Linux
+   python3 -m venv venv
+   source venv/bin/activate
+
+   # On Windows
+   python -m venv venv
+   venv\Scripts\activate
+   ```
+
+3. Install dependencies:
+   ```bash
    pip install -r requirements.txt
    ```
 
-2. Run the simulation:
+### Running the Simulation
+
+1. Activate the virtual environment (if not already activated):
+   ```bash
+   # On macOS/Linux
+   source venv/bin/activate
+
+   # On Windows
+   venv\Scripts\activate
    ```
+
+2. Run the main simulation:
+   ```bash
    python src/main.py
    ```
 
-3. Try the enhanced simulation demo:
+3. Or try one of the examples:
+   ```bash
+   python examples/simple_teleop.py
    ```
-   ./examples/simulation_demo.py
-   ```
+
+### Running Tests
+
+With the virtual environment activated:
+```bash
+python -m pytest tests/
+```
 
 ## Directory Structure
 
 ```
 teleop/
-├── docs/                 # Documentation and demo artifacts
-│   ├── simulation_engine/  # Simulation engine demo outputs
-│   ├── robot_models/     # Robot models documentation
-│   ├── operator/         # Operator interface documentation
-│   └── communication/    # Communication layer documentation
+├── docs/                 # Documentation
 ├── src/                  # Source code
-│   ├── simulation/       # Simulation engine module (enhanced!)
-│   │   ├── simulator.py  # PyBullet-based physics simulation
-│   │   ├── environment.py # Environment creation tools
-│   │   └── visualization.py # Visualization utilities
+│   ├── simulation/       # Simulation engine module
 │   ├── robots/           # Robot models module
 │   ├── operator/         # Operator interface module
 │   ├── communication/    # Communication layer module
@@ -134,8 +128,56 @@ teleop/
 │   ├── communication/
 │   └── integration/
 ├── examples/             # Example usage scripts
-│   ├── simple_teleop.py  # Simple teleoperation example
-│   └── simulation_demo.py # Enhanced simulation engine demo
 ├── requirements.txt      # Project dependencies
+├── venv/                 # Virtual environment (not tracked by git)
 └── README.md             # Project overview
-``` 
+```
+
+## Troubleshooting
+
+### IDE Import Resolution Issues
+
+If you're experiencing "Import could not be resolved" errors in your IDE (for modules like numpy, matplotlib, etc.) even though the code runs correctly, try the following:
+
+1. **Install in Development Mode**:
+   After activating your virtual environment, run:
+   ```bash
+   pip install -e .
+   ```
+
+2. **Configure VSCode**:
+   - Make sure your Python interpreter is set to the virtual environment's Python
+   - Reload your VSCode window after making configuration changes
+   - The provided `.vscode/settings.json` should handle most import resolution issues
+
+3. **Environment Variables**:
+   If the above doesn't work, you can set the PYTHONPATH environment variable before starting your IDE:
+   ```bash
+   PYTHONPATH=$PYTHONPATH:$PWD code .
+   ```
+
+### Module Override Warnings
+
+If you're seeing module override warnings, these are typically harmless but can be fixed by:
+- Ensuring module names don't conflict with standard library or installed packages
+- Using explicit relative imports
+
+### Missing Module Source Issues
+
+If you see errors like `Import "setuptools" could not be resolved from source`, try:
+
+1. **Install Missing Packages**:
+   ```bash
+   pip install setuptools
+   ```
+
+2. **Disable Missing Module Source Warnings**:
+   In VSCode, you can disable these warnings by adding to your settings.json:
+   ```json
+   "python.analysis.diagnosticSeverityOverrides": {
+       "reportMissingModuleSource": "none"
+   }
+   ```
+
+3. **Reload Your Editor**:
+   After making changes, reload your editor window to apply them.

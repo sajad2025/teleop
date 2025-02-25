@@ -3,10 +3,7 @@ numpy>=1.22.0
 scipy>=1.8.0
 pybullet>=3.2.1  # Physics engine
 gymnasium>=0.27.0  # Environment interfaces
-
-# Enhanced simulation dependencies
-pillow>=9.0.0  # Image processing
-ffmpeg-python>=0.2.0  # For video creation
+setuptools>=68.0.0  # Package setup and distribution
 
 # Robot modeling
 roboticstoolbox-python>=0.13.0  # Robotics algorithms

@@ -1,8 +1,10 @@
 """
-Simulation module for teleoperation.
+Simulation engine module.
 
-This module handles the physics simulation, environment modeling,
-and sensor simulation components of the teleoperation system.
+This module provides the physics simulation, environment modeling,
+and time management components.
 """
 
-__version__ = "0.1.0" 
+__version__ = "0.1.0"
+# Explicitly expose module contents
+from src.simulation.simulator import Simulator 

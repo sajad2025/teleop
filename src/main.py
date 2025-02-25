@@ -8,8 +8,12 @@ This script initializes all components and runs the simulation.
 import argparse
 import logging
 import sys
+import os
 import time
 from typing import Dict, Any
+
+# Add the project root to the Python path
+sys.path.insert(0, os.path.abspath(os.path.dirname(os.path.dirname(__file__))))
 
 from src.common.interfaces import (
     Command, Pose, Vector3, Quaternion
