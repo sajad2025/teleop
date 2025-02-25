@@ -6,10 +6,33 @@ A modular simulation platform for teleoperation of general robotic systems.
 
 This project is structured into four independent modules to facilitate parallel development:
 
-1. **Simulation Engine** - Core physics simulation and virtual environment modeling
+1. **Simulation Engine** - Core physics simulation and virtual environment modeling (now with PyBullet integration!)
 2. **Robot Models** - Robot definitions, kinematics, dynamics, and control interfaces
 3. **Operator Interface** - Human input handling, visualization, and teleoperation UI
 4. **Communication Layer** - Data transfer protocols, latency simulation, and network effects
+
+## Enhanced Simulation Engine
+
+The simulation engine has been significantly enhanced with:
+
+- **PyBullet Integration**: Realistic physics simulation
+- **Visual Rendering**: Camera views and video creation
+- **Multiple Robot Types**: Support for various robot models (KUKA arm, Husky mobile platform, etc.)
+- **Environment Creator**: Tools for building different simulation scenarios
+- **Visualization Tools**: Plotting and data visualization utilities
+
+To try the enhanced simulation engine demo:
+
+```bash
+# Run the full demo
+./examples/simulation_demo.py
+
+# Run a specific demo
+./examples/simulation_demo.py --demo physics
+./examples/simulation_demo.py --demo control
+./examples/simulation_demo.py --demo trajectory
+./examples/simulation_demo.py --demo multi
+```
 
 ## Module Responsibilities
 
@@ -67,13 +90,21 @@ To ensure smooth collaboration:
    python src/main.py
    ```
 
+3. Try the enhanced simulation demo:
+   ```
+   ./examples/simulation_demo.py
+   ```
+
 ## Directory Structure
 
 ```
 teleop/
 ├── docs/                 # Documentation
 ├── src/                  # Source code
-│   ├── simulation/       # Simulation engine module
+│   ├── simulation/       # Simulation engine module (enhanced!)
+│   │   ├── simulator.py  # PyBullet-based physics simulation
+│   │   ├── environment.py # Environment creation tools
+│   │   └── visualization.py # Visualization utilities
 │   ├── robots/           # Robot models module
 │   ├── operator/         # Operator interface module
 │   ├── communication/    # Communication layer module
@@ -86,6 +117,8 @@ teleop/
 │   ├── communication/
 │   └── integration/
 ├── examples/             # Example usage scripts
+│   ├── simple_teleop.py  # Simple teleoperation example
+│   └── simulation_demo.py # Enhanced simulation engine demo
 ├── requirements.txt      # Project dependencies
 └── README.md             # Project overview
 ``` 
