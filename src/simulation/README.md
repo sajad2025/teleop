@@ -69,6 +69,8 @@ To run the simulation demo:
 ./examples/simulation_demo.py --headless
 ```
 
+All demo artifacts (images, videos, plots) will be saved to the `docs/simulation_engine/` directory, which can be used for documentation and GitHub Pages.
+
 ## Extending the Simulation Engine
 
 To add new robot types:

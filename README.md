@@ -34,6 +34,19 @@ To try the enhanced simulation engine demo:
 ./examples/simulation_demo.py --demo multi
 ```
 
+Demo artifacts (images, videos, plots) are saved to the `docs/simulation_engine/` directory.
+
+## Documentation
+
+The project includes a documentation folder (`docs/`) where each module can store demo artifacts, screenshots, videos, and other documentation materials. This content can be used for:
+
+- GitHub Pages documentation
+- Progress reports
+- Demonstration materials
+- Usage examples
+
+Each module has its own subdirectory (e.g., `docs/simulation_engine/`, `docs/robot_models/`, etc.).
+
 ## Module Responsibilities
 
 ### Simulation Engine
@@ -99,7 +112,11 @@ To ensure smooth collaboration:
 
 ```
 teleop/
-├── docs/                 # Documentation
+├── docs/                 # Documentation and demo artifacts
+│   ├── simulation_engine/  # Simulation engine demo outputs
+│   ├── robot_models/     # Robot models documentation
+│   ├── operator/         # Operator interface documentation
+│   └── communication/    # Communication layer documentation
 ├── src/                  # Source code
 │   ├── simulation/       # Simulation engine module (enhanced!)
 │   │   ├── simulator.py  # PyBullet-based physics simulation

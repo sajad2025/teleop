@@ -51,7 +51,7 @@ def demo_simple_physics(simulator: Simulator, visualizer: SimulationVisualizer) 
     
     # Capture and save a snapshot
     visualizer.capture_image("physics_demo.png")
-    print("Snapshot saved to output/physics_demo.png")
+    print("Snapshot saved to docs/simulation_engine/physics_demo.png")
 
 
 def demo_robot_control(simulator: Simulator, visualizer: SimulationVisualizer) -> None:
@@ -100,7 +100,7 @@ def demo_robot_control(simulator: Simulator, visualizer: SimulationVisualizer) -
     
     # Capture and save a snapshot
     visualizer.capture_image("robot_joint_position.png")
-    print("Snapshot saved to output/robot_joint_position.png")
+    print("Snapshot saved to docs/simulation_engine/robot_joint_position.png")
     
     # Move the robot - velocity command
     print("\nMoving robot with velocity command...")
@@ -117,7 +117,7 @@ def demo_robot_control(simulator: Simulator, visualizer: SimulationVisualizer) -
     
     # Capture and save a snapshot
     visualizer.capture_image("robot_velocity.png")
-    print("Snapshot saved to output/robot_velocity.png")
+    print("Snapshot saved to docs/simulation_engine/robot_velocity.png")
 
 
 def demo_robot_trajectory(simulator: Simulator, visualizer: SimulationVisualizer) -> None:
@@ -172,7 +172,7 @@ def demo_robot_trajectory(simulator: Simulator, visualizer: SimulationVisualizer
     
     # Plot the trajectory
     visualizer.plot_robot_trajectory(robot_id, duration=0.1, dt=0.01, filename="robot_trajectory.png")
-    print("Trajectory plot saved to output/robot_trajectory.png")
+    print("Trajectory plot saved to docs/simulation_engine/robot_trajectory.png")
 
 
 def demo_multi_robot(simulator: Simulator, visualizer: SimulationVisualizer) -> None:
@@ -243,7 +243,7 @@ def demo_multi_robot(simulator: Simulator, visualizer: SimulationVisualizer) -> 
         camera_pos=[1.5, 1.5, 1.0],
         orbital=True
     )
-    print("Video saved to output/multi_robot_demo.mp4")
+    print("Video saved to docs/simulation_engine/multi_robot_demo.mp4")
 
 
 def main():
@@ -267,8 +267,8 @@ def main():
     # Initialize the simulator
     simulator = Simulator(use_gui=not args.headless)
     
-    # Initialize the visualizer
-    visualizer = SimulationVisualizer(simulator)
+    # Initialize the visualizer with the new output directory
+    visualizer = SimulationVisualizer(simulator, output_dir="docs/simulation_engine")
     
     try:
         # Run the selected demo
