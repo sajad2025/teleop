@@ -1,0 +1,24 @@
+# Core simulation dependencies
+numpy>=1.22.0
+scipy>=1.8.0
+pybullet>=3.2.1  # Physics engine
+gymnasium>=0.27.0  # Environment interfaces
+
+# Robot modeling
+roboticstoolbox-python>=0.13.0  # Robotics algorithms
+sympy>=1.9.0  # Symbolic mathematics for kinematics
+
+# Visualization and UI
+pygame>=2.1.0  # Simple 2D visualization
+matplotlib>=3.5.0  # Plotting
+PyOpenGL>=3.1.6  # 3D visualization
+
+# Communication
+websockets>=10.3  # Real-time communication
+protobuf>=3.19.0  # Data serialization
+
+# Development tools
+pytest>=7.0.0  # Testing
+black>=22.1.0  # Code formatting
+mypy>=0.940  # Type checking
+pylint>=2.12.0  # Linting 
